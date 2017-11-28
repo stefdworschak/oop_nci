@@ -55,9 +55,6 @@ public class FlightsGui extends javax.swing.JFrame {
 
         ReturnGrp = new javax.swing.ButtonGroup();
         TypeGrp = new javax.swing.ButtonGroup();
-        dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
-        dateChooserDialog1 = new datechooser.beans.DateChooserDialog();
-        dateChooserDialog2 = new datechooser.beans.DateChooserDialog();
         oneWayRb = new javax.swing.JRadioButton();
         returnRb = new javax.swing.JRadioButton();
         flightNumLbl = new javax.swing.JLabel();
@@ -554,9 +551,6 @@ layout.setHorizontalGroup(
     private javax.swing.JTextField baggageWeightTxt;
     private javax.swing.JRadioButton businessRb;
     private javax.swing.JButton cancelBtn;
-    private datechooser.beans.DateChooserCombo dateChooserCombo1;
-    private datechooser.beans.DateChooserDialog dateChooserDialog1;
-    private datechooser.beans.DateChooserDialog dateChooserDialog2;
     private datechooser.beans.DateChooserCombo departureDateCombo;
     private javax.swing.JLabel departureDateLbl;
     private javax.swing.JLabel departureLbl;
