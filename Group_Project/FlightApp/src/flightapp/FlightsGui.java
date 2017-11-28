@@ -55,6 +55,9 @@ public class FlightsGui extends javax.swing.JFrame {
 
         ReturnGrp = new javax.swing.ButtonGroup();
         TypeGrp = new javax.swing.ButtonGroup();
+        dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
+        dateChooserDialog1 = new datechooser.beans.DateChooserDialog();
+        dateChooserDialog2 = new datechooser.beans.DateChooserDialog();
         oneWayRb = new javax.swing.JRadioButton();
         returnRb = new javax.swing.JRadioButton();
         flightNumLbl = new javax.swing.JLabel();
@@ -65,8 +68,6 @@ public class FlightsGui extends javax.swing.JFrame {
         destinationTxt = new javax.swing.JTextField();
         departureDateLbl = new javax.swing.JLabel();
         returnDateLbl = new javax.swing.JLabel();
-        departureDateTxt = new javax.swing.JTextField();
-        returnDateTxt = new javax.swing.JTextField();
         ticketTypeLbl = new javax.swing.JLabel();
         lowFareRb = new javax.swing.JRadioButton();
         flexFareRb = new javax.swing.JRadioButton();
@@ -85,6 +86,8 @@ public class FlightsGui extends javax.swing.JFrame {
         flightsBox = new javax.swing.JList<>();
         saveBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
+        departureDateCombo = new datechooser.beans.DateChooserCombo();
+        returnDateCombo = new datechooser.beans.DateChooserCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,151 +175,242 @@ public class FlightsGui extends javax.swing.JFrame {
 
         cancelBtn.setText("Cancel");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ticketTypeLbl)
-                        .addGap(34, 34, 34)
-                        .addComponent(lowFareRb))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(departureLbl)
-                                .addGap(30, 30, 30)
-                                .addComponent(departureTxt))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(destinationLbl)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(departureDateLbl)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(departureDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(destinationTxt))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(71, 71, 71)
-                                                    .addComponent(flexFareRb)
-                                                    .addGap(51, 51, 51)
-                                                    .addComponent(businessRb))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(returnDateLbl)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(returnDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(priorityBoardingCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(baggageWeightTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(flightNumLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(oneWayRb)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(returnRb))
-                                    .addComponent(flightNumTxt))))
-                        .addGap(73, 73, 73)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(searchLbl)
-                                .addGap(18, 18, 18)
-                                .addComponent(searchTxt))
-                            .addComponent(flightsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inFlightMealLbl)
-                            .addComponent(seatSelectionLbl))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(saveBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cancelBtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(inFlightMealCb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(seatSelectionCb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(baggageWeightLbl)
-                                    .addComponent(priorityBoardingLbl))))))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(oneWayRb)
-                            .addComponent(returnRb)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchLbl))))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(flightNumLbl)
-                    .addComponent(flightNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(departureLbl)
-                            .addComponent(departureTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(destinationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(destinationLbl))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(departureDateLbl)
-                            .addComponent(returnDateLbl)
-                            .addComponent(departureDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(returnDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(flightsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ticketTypeLbl)
-                    .addComponent(lowFareRb)
-                    .addComponent(flexFareRb)
-                    .addComponent(businessRb))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inFlightMealLbl)
-                    .addComponent(inFlightMealCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(baggageWeightLbl)
-                    .addComponent(baggageWeightTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(seatSelectionLbl)
-                    .addComponent(seatSelectionCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(priorityBoardingLbl)
-                    .addComponent(priorityBoardingCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveBtn)
-                    .addComponent(cancelBtn))
-                .addGap(28, 28, 28))
-        );
+        departureDateCombo.setCurrentView(new datechooser.view.appearance.AppearancesList("Dali",
+            new datechooser.view.appearance.ViewAppearance("custom",
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    true,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 255),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(128, 128, 128),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(255, 0, 0),
+                    false,
+                    false,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                (datechooser.view.BackRenderer)null,
+                false,
+                true)));
+    departureDateCombo.setShowOneMonth(true);
+    departureDateCombo.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
+        public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
+            departureDateComboOnSelectionChange(evt);
+        }
+    });
+    departureDateCombo.addCommitListener(new datechooser.events.CommitListener() {
+        public void onCommit(datechooser.events.CommitEvent evt) {
+            departureDateComboOnCommit(evt);
+        }
+    });
 
-        pack();
+    returnDateCombo.setCurrentView(new datechooser.view.appearance.AppearancesList("Dali",
+        new datechooser.view.appearance.ViewAppearance("custom",
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(0, 0, 0),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(0, 0, 0),
+                new java.awt.Color(0, 0, 255),
+                true,
+                true,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(0, 0, 255),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(128, 128, 128),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.LabelPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(0, 0, 0),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.LabelPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(0, 0, 0),
+                new java.awt.Color(255, 0, 0),
+                false,
+                false,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            (datechooser.view.BackRenderer)null,
+            false,
+            true)));
+
+javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+getContentPane().setLayout(layout);
+layout.setHorizontalGroup(
+    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    .addGroup(layout.createSequentialGroup()
+        .addGap(65, 65, 65)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inFlightMealLbl)
+                    .addComponent(seatSelectionLbl))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(saveBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancelBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(inFlightMealCb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(seatSelectionCb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(baggageWeightLbl)
+                            .addComponent(priorityBoardingLbl)))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(departureLbl)
+                    .addGap(30, 30, 30)
+                    .addComponent(departureTxt))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(departureDateLbl)
+                        .addComponent(destinationLbl))
+                    .addGap(159, 159, 159)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, Short.MAX_VALUE)
+                            .addComponent(destinationTxt))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(42, 42, 42)
+                            .addComponent(returnDateLbl)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(returnDateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 199, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(flexFareRb)
+                            .addGap(51, 51, 51)
+                            .addComponent(businessRb))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(priorityBoardingCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(baggageWeightTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(flightNumLbl)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(oneWayRb)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(returnRb))
+                        .addComponent(flightNumTxt))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(departureDateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addComponent(ticketTypeLbl)
+                    .addGap(34, 34, 34)
+                    .addComponent(lowFareRb))))
+        .addGap(73, 73, 73)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(searchLbl)
+                .addGap(18, 18, 18)
+                .addComponent(searchTxt))
+            .addComponent(flightsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(oneWayRb)
+                        .addComponent(returnRb)))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(36, 36, 36)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchLbl))))
+            .addGap(20, 20, 20)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(flightNumLbl)
+                .addComponent(flightNumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(departureLbl)
+                        .addComponent(departureTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(destinationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(destinationLbl))
+                            .addGap(26, 26, 26)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(returnDateLbl)
+                                .addComponent(departureDateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(departureDateLbl)))
+                        .addComponent(returnDateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(8, 8, 8)
+                    .addComponent(flightsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGap(23, 23, 23)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(ticketTypeLbl)
+                .addComponent(lowFareRb)
+                .addComponent(flexFareRb)
+                .addComponent(businessRb))
+            .addGap(25, 25, 25)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(inFlightMealLbl)
+                .addComponent(inFlightMealCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(baggageWeightLbl)
+                .addComponent(baggageWeightTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(seatSelectionLbl)
+                .addComponent(seatSelectionCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(priorityBoardingLbl)
+                .addComponent(priorityBoardingCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(saveBtn)
+                .addComponent(cancelBtn))
+            .addGap(28, 28, 28))
+    );
+
+    pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lowFareRbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lowFareRbActionPerformed
@@ -354,23 +448,23 @@ public class FlightsGui extends javax.swing.JFrame {
 
     private void oneWayRbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneWayRbActionPerformed
         returnDateLbl.setVisible(false);
-        returnDateTxt.setVisible(false);
+        returnDateCombo.setVisible(false);
     }//GEN-LAST:event_oneWayRbActionPerformed
 
     private void returnRbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnRbActionPerformed
         returnDateLbl.setVisible(true);
-        returnDateTxt.setVisible(true);
+        returnDateCombo.setVisible(true);
     }//GEN-LAST:event_returnRbActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
     if( 
-        ((departureDateTxt.getText().equals("")
+        ((departureDateCombo.getText().equals("")
         || departureTxt.getText().equals("") 
         || destinationTxt.getText().equals("") 
         || flightNumTxt.getText().equals("")
-        || returnDateTxt.getText().equals("")) && returnRb.isSelected())||
+        || returnDateCombo.getText().equals("")) && returnRb.isSelected())||
     
-        ((departureDateTxt.getText().equals("") 
+        ((departureDateCombo.getText().equals("") 
         || departureTxt.getText().equals("") 
         || destinationTxt.getText().equals("")
         || flightNumTxt.getText().equals("")) && oneWayRb.isSelected())
@@ -383,10 +477,10 @@ public class FlightsGui extends javax.swing.JFrame {
        else{
          try{
             if(oneWayRb.isSelected()){
-                departureDate = df.parse(departureDateTxt.getText());
+                departureDate = df.parse(departureDateCombo.getText());
             } else {
-                departureDate = df.parse(departureDateTxt.getText());
-                returnDate = df.parse(returnDateTxt.getText());
+                departureDate = df.parse(departureDateCombo.getText());
+                returnDate = df.parse(returnDateCombo.getText());
             }
             
             if(lowFareRb.isSelected()){
@@ -409,6 +503,14 @@ public class FlightsGui extends javax.swing.JFrame {
        }
         
     }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void departureDateComboOnCommit(datechooser.events.CommitEvent evt) {//GEN-FIRST:event_departureDateComboOnCommit
+        // TODO add your handling code here:
+    }//GEN-LAST:event_departureDateComboOnCommit
+
+    private void departureDateComboOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_departureDateComboOnSelectionChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_departureDateComboOnSelectionChange
     
     /**
      * @param args the command line arguments
@@ -452,8 +554,11 @@ public class FlightsGui extends javax.swing.JFrame {
     private javax.swing.JTextField baggageWeightTxt;
     private javax.swing.JRadioButton businessRb;
     private javax.swing.JButton cancelBtn;
+    private datechooser.beans.DateChooserCombo dateChooserCombo1;
+    private datechooser.beans.DateChooserDialog dateChooserDialog1;
+    private datechooser.beans.DateChooserDialog dateChooserDialog2;
+    private datechooser.beans.DateChooserCombo departureDateCombo;
     private javax.swing.JLabel departureDateLbl;
-    private javax.swing.JTextField departureDateTxt;
     private javax.swing.JLabel departureLbl;
     private javax.swing.JTextField departureTxt;
     private javax.swing.JLabel destinationLbl;
@@ -469,8 +574,8 @@ public class FlightsGui extends javax.swing.JFrame {
     private javax.swing.JRadioButton oneWayRb;
     private javax.swing.JComboBox<String> priorityBoardingCb;
     private javax.swing.JLabel priorityBoardingLbl;
+    private datechooser.beans.DateChooserCombo returnDateCombo;
     private javax.swing.JLabel returnDateLbl;
-    private javax.swing.JTextField returnDateTxt;
     private javax.swing.JRadioButton returnRb;
     private javax.swing.JButton saveBtn;
     private javax.swing.JLabel searchLbl;
